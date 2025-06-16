@@ -1,4 +1,4 @@
-from secret_key import groqapi_key
+import streamlit as st
 import os
 import logging
 from langchain_community.llms import Ollama
@@ -10,7 +10,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Set the Groq API key as an environment variable
-os.environ['GROQ_API_KEY'] = groqapi_key
+groqapi_key = st.secrets["groqapi_key"]
+os.environ["groqapi_key"] = groqapi_key
 
 # Initialize LLM with error handling
 def initialize_llm():
